@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Building a real-time polls application with Node.js, AngularJS and MongoDB
 
 This application allows you to create polls - and enables users to vote on polls,
@@ -22,3 +23,7 @@ You can see the app running live at [http://bluemixpolls.bluemix.net/](http://bl
 
 The source code for the app is available under the MIT license, which is found in license.txt in the root
 of this repository.
+=======
+# polling
+polls
+>>>>>>> c0ad4be10549fb5f1cd28e26c2afdc9206a99250
