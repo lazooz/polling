@@ -10,6 +10,7 @@ if (process.env.VCAP_SERVICES) {
 
 // Get Poll schema and model
 var PollSchema = require('../models/Poll.js').PollSchema;
+var PollUtils = require('../utils/pollUtils.js');
 var Poll = db.model('polls', PollSchema);
 
 // Main application view
@@ -66,11 +67,25 @@ exports.poll = function(req, res) {
 	});
 };
 
+exports.pollCmdHandler = function (req, res) {
+	fullCommand = req.body.command;
+	command = PollUtils.parseCommand(fullCommand);
+    var result;
+	switch (command){
+        case "create":
+            result = PollUtils.parseCreatePollCmd(fullCommand);
+            break;
+        default :
+            result = "unknown command"
+	}
+    return res.status(200).send(result);
+};
+
 // JSON API for creating a new poll
 exports.create = function(req, res) {
 	var reqBody = req.body,
 			// Filter out choices with empty text
-			choices = reqBody.choices.filter(function(v) { return v.text != ''; }),
+			choices = reqBody.command.filter(function(v) { return v.text != ''; }),
 			// Build up poll object to save
 			pollObj = {question: reqBody.question, choices: choices};
 				
