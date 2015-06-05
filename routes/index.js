@@ -13,7 +13,7 @@ db = mongoose.connect(uristring, function (err, res) {
 	} else {
 		console.log('Succeeded connected to: ' + uristring);
 	}
-}
+};
 //});
 //} else {
    //db = mongoose.createConnection('localhost', 'pollsapp');
