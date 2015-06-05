@@ -4,6 +4,7 @@ exports.parseCommand = function (fullCommand) {
     command = cmdArray[1];
     return typeof command === 'string' ? command.toLowerCase() : null;
 };
+var token = /[a,q]:/g;
 exports.parseCreatePollCmd  = function  (command){
     var index = command.search("q:");
     res = command.substr(index+2).split(token);
