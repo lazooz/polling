@@ -1,7 +1,7 @@
 // Connect to MongoDB using Mongoose
 var mongoose = require('mongoose');
 var db;
-if (process.env.VCAP_SERVICES) {
+//if (process.env.VCAP_SERVICES) {
 
    //var env = JSON.parse(process.env.VCAP_SERVICES);
 var uristring =
@@ -13,10 +13,10 @@ db = mongoose.connect(uristring, function (err, res) {
 	} else {
 		console.log ('Succeeded connected to: ' + uristring);
 	}
-});
-} else {
-   db = mongoose.createConnection('localhost', 'pollsapp');
-}
+//});
+//} else {
+   //db = mongoose.createConnection('localhost', 'pollsapp');
+//}
 
 // Get Poll schema and model
 var PollSchema = require('../models/Poll.js').PollSchema;
