@@ -1,7 +1,7 @@
 // Connect to MongoDB using Mongoose
 var mongoose = require('mongoose');
 var db;
-//if (process.env.VCAP_SERVICES) {
+if (process.env.VCAP_SERVICES) {
 
    //var env = JSON.parse(process.env.VCAP_SERVICES);
 var uristring =
@@ -14,9 +14,9 @@ db = mongoose.connect(uristring, function (err, res) {
 		console.log ('Succeeded connected to: ' + uristring);
 	}
 });
-//} else {
-//   db = mongoose.createConnection('localhost', 'pollsapp');
-//}
+} else {
+   db = mongoose.createConnection('localhost', 'pollsapp');
+}
 
 // Get Poll schema and model
 var PollSchema = require('../models/Poll.js').PollSchema;
@@ -91,6 +91,12 @@ exports.pollCmdHandler = function (req, res) {
     return res.status(200).send(result);
 };
 
+exports.hello = function(req, res) {
+	var userName = req.body.user_name;
+
+	return res.status(200).send(userName);
+
+	};
 // JSON API for creating a new poll
 exports.create = function(req, res) {
 	var reqBody = req.body,
