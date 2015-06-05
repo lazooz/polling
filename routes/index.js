@@ -11,7 +11,6 @@ var uristring =
 
 // The http server will listen to an appropriate port, or default to
 // port 5000.
-var theport = process.env.PORT || 5000;
 
 // Makes connection asynchronously.  Mongoose will queue up database
 // operations and release them when the connection is complete.
@@ -102,7 +101,6 @@ exports.pollCmdHandler = function (req, res) {
 
 exports.hello = function(req, res) {
 	var userName = req.body.user_name;
-
 	return res.status(200).send(userName);
 
 	};
