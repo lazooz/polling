@@ -100,7 +100,7 @@ exports.pollCmdHandler = function (req, res) {
 };
 
 exports.hello = function(req, res) {
-	var userName = req.body.user_name;
+	var userName = req.body;
 	return res.status(200).send(userName);
 
 	};
