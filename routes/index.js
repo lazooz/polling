@@ -2,8 +2,12 @@
 var mongoose = require('mongoose');
 var db;
 if (process.env.VCAP_SERVICES) {
+
    var env = JSON.parse(process.env.VCAP_SERVICES);
-   db = mongoose.createConnection(env['mongodb-2.2'][0].credentials.url);
+	var uristring =
+		process.env.MONGOLAB_URI ||
+		process.env.MONGOHQ_URL
+   db = mongoose.createConnection(uristring);
 } else {
    db = mongoose.createConnection('localhost', 'pollsapp');
 }
